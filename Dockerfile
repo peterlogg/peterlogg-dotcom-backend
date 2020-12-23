@@ -8,14 +8,15 @@ COPY . .
 
 # Build and test our code, then build the “peterlogg-dotcom-backend-haskell-exe” executable.
 RUN stack setup
+RUN stack test
 RUN stack build --copy-bins
 
 # Use a Docker multi-stage build to create a lean production image.
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-FROM fpco/haskell-scratch:integer-gmp
+FROM alpine:latest
 
-# Copy the "peterlogg-dotcom-backend-haskell-exe" executable from the builder stage to the production image.
-WORKDIR /root/
+# Add the libraries we need to run the application
+RUN apk add libc6-compat gmp
 COPY --from=builder /root/.local/bin/peterlogg-dotcom-backend-exe .
 
 # Run the web service on container startup.
