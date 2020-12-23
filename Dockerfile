@@ -6,7 +6,7 @@ FROM haskell:8 as builder
 WORKDIR /app
 COPY . .
 
-# Build and test our code, then build the “helloworld-haskell-exe” executable.
+# Build and test our code, then build the “peterlogg-dotcom-backend-haskell-exe” executable.
 RUN stack setup
 RUN stack build --copy-bins
 
@@ -14,9 +14,9 @@ RUN stack build --copy-bins
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM fpco/haskell-scratch:integer-gmp
 
-# Copy the "helloworld-haskell-exe" executable from the builder stage to the production image.
+# Copy the "peterlogg-dotcom-backend-haskell-exe" executable from the builder stage to the production image.
 WORKDIR /root/
-COPY --from=builder /root/.local/bin/helloworld-exe .
+COPY --from=builder /root/.local/bin/peterlogg-dotcom-backend--exe .
 
 # Run the web service on container startup.
-CMD ["./helloworld-exe"]
+CMD ["./peterlogg-dotcom-backend-exe"]
