@@ -16,7 +16,7 @@ FROM fpco/haskell-scratch:integer-gmp
 
 # Copy the "peterlogg-dotcom-backend-haskell-exe" executable from the builder stage to the production image.
 WORKDIR /root/
-COPY --from=builder /root/.local/bin/peterlogg-dotcom-backend--exe .
+COPY --from=builder /root/.local/bin/peterlogg-dotcom-backend-exe .
 
 # Run the web service on container startup.
 CMD ["./peterlogg-dotcom-backend-exe"]
