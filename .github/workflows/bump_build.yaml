@@ -16,6 +16,15 @@ jobs:
       with:
         fetch-depth: '0'
 
+    - uses: haskell/actions/setup@v1
+      with:
+        ghc-version: '8.8.4' # Exact version of ghc to use
+        enable-stack: true
+        stack-version: 'latest'
+
+    - name: Testing suite
+      run: stack test
+
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.26.0
       env:
