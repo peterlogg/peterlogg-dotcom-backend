@@ -15,4 +15,6 @@ jobs:
           ghc-version: '8.8.4' # Exact version of ghc to use
           enable-stack: true
           stack-version: 'latest'
-      - run: stack test
+      - run: |
+          ls
+          stack test
