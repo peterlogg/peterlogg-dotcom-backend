@@ -1,46 +1,46 @@
-name: Bump version + build + push image
-on:
-  push:
-    branches:
-      - master
+# name: Bump version + build + push image
+# on:
+#   push:
+#     branches:
+#       - master
 
-env:
-  PROJECT_ID: ${{ secrets.PROJECT_ID }}
-  IMAGE: backend
+# env:
+#   PROJECT_ID: ${{ secrets.PROJECT_ID }}
+#   IMAGE: backend
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#       with:
+#         fetch-depth: '0'
 
-    - uses: haskell/actions/setup@v1
-      with:
-        ghc-version: '8.8.4' # Exact version of ghc to use
-        enable-stack: true
-        stack-version: 'latest'
+#     - uses: haskell/actions/setup@v1
+#       with:
+#         ghc-version: '8.8.4' # Exact version of ghc to use
+#         enable-stack: true
+#         stack-version: 'latest'
 
-    # - name: Testing suite
-    #   run: stack test
+#     # - name: Testing suite
+#     #   run: stack test
 
-    # - name: Bump version and push tag
-    #   uses: anothrNick/github-tag-action@1.26.0
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     WITH_V: true
+#     # - name: Bump version and push tag
+#     #   uses: anothrNick/github-tag-action@1.26.0
+#     #   env:
+#     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     #     WITH_V: true
 
-    - name: Get short SHA
-      id: vars
-      run: echo "::set-output name=GITHUB_SHORT_SHA::$(git rev-parse --short HEAD)"
+#     - name: Get short SHA
+#       id: vars
+#       run: echo "::set-output name=GITHUB_SHORT_SHA::$(git rev-parse --short HEAD)"
 
-    # Build the Docker image
-    - name: Build image
-      run: |-
-        docker build --tag "gcr.io/$PROJECT_ID/$IMAGE::${{ steps.vars.outputs.GITHUB_SHORT_SHA }}" .
+#     # Build the Docker image
+#     - name: Build image
+#       run: |-
+#         docker build --tag "gcr.io/$PROJECT_ID/$IMAGE::${{ steps.vars.outputs.GITHUB_SHORT_SHA }}" .
 
-    # Push the Docker image to Google Container Registry
-    - name: Publish image
-      run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE:${{ steps.vars.outputs.GITHUB_SHORT_SHA }}"
+#     # Push the Docker image to Google Container Registry
+#     - name: Publish image
+#       run: |-
+#         docker push "gcr.io/$PROJECT_ID/$IMAGE:${{ steps.vars.outputs.GITHUB_SHORT_SHA }}"
