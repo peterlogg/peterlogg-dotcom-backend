@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
-  IMAGE: peterlogg-dotcom-backend
+  IMAGE: backend
 
 jobs:
   build:
@@ -31,13 +31,16 @@ jobs:
     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     #     WITH_V: true
 
+    - name: Get short SHA
+      id: vars
+      run: echo "::set-output name=GITHUB_SHORT_SHA::$(git rev-parse --short HEAD)"
+
     # Build the Docker image
     - name: Build image
       run: |-
-        docker build \
-          --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
-          .
+        docker build --tag "gcr.io/$PROJECT_ID/$IMAGE::${{ steps.vars.outputs.GITHUB_SHORT_SHA }}" .
+
     # Push the Docker image to Google Container Registry
     - name: Publish image
       run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+        docker push "gcr.io/$PROJECT_ID/$IMAGE:${{ steps.vars.outputs.GITHUB_SHORT_SHA }}"
