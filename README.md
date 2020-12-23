@@ -1,6 +1,6 @@
 # `www.peterlogg.com` backend
 
-Haskell application deployed on Google CloudRun to serve [this](www.peterlogg.com) website.
+Haskell application (soon-to-be) deployed on Google CloudRun to serve [this](http://www.peterlogg.com) website. Toy project to try and learn some Haskell.
 
 #### TODO
 
