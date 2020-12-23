@@ -22,14 +22,14 @@ jobs:
         enable-stack: true
         stack-version: 'latest'
 
-    - name: Testing suite
-      run: stack test
+    # - name: Testing suite
+    #   run: stack test
 
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: true
+    # - name: Bump version and push tag
+    #   uses: anothrNick/github-tag-action@1.26.0
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     WITH_V: true
 
     # Build the Docker image
     - name: Build image
