@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8acc17f5a9810311dd0fb816345c4d2271544302b46be7db45d525a7f9a00d7d
+-- hash: c7d1504b85db1fc1837d7fda7319da1cdaabfd4ae566151f36003632d5376678
 
 name:           peterlogg-dotcom-backend
 version:        0.1.0.0
@@ -36,6 +36,7 @@ library
       base >=4.7 && <5
     , http-types
     , scotty
+    , wai-cors
   default-language: Haskell2010
 
 executable peterlogg-dotcom-backend-exe
@@ -50,6 +51,7 @@ executable peterlogg-dotcom-backend-exe
     , http-types
     , peterlogg-dotcom-backend
     , scotty
+    , wai-cors
   default-language: Haskell2010
 
 test-suite peterlogg-dotcom-backend-test
@@ -65,4 +67,5 @@ test-suite peterlogg-dotcom-backend-test
     , http-types
     , peterlogg-dotcom-backend
     , scotty
+    , wai-cors
   default-language: Haskell2010
