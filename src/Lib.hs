@@ -1,14 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Lib
-  ( someFunc,
+  ( restServer,
   )
 where
 
 import Network.HTTP.Types
-import Web.Scotty
+import Web.Scotty (get, post, put, scotty, text)
 
-someFunc = scotty 8080 $ do
+restServer = scotty 8080 $ do
   get "/" $ do
     -- handle GET request on "/" URL
     text "This was a GET request!" -- send 'text/plain' response
