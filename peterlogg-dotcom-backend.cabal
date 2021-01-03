@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c7d1504b85db1fc1837d7fda7319da1cdaabfd4ae566151f36003632d5376678
+-- hash: 4f774d95770bbf159305e9948564715e1da1cfae3386bf8c308a757aaf9d1e0e
 
 name:           peterlogg-dotcom-backend
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/peterlogg-dotcom-backend#readme>
-homepage:       https://github.com/githubuser/peterlogg-dotcom-backend#readme
-bug-reports:    https://github.com/githubuser/peterlogg-dotcom-backend/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2020 Author name here
+homepage:       https://github.com/peterlogg/peterlogg-dotcom-backend#readme
+bug-reports:    https://github.com/peterlogg/peterlogg-dotcom-backend/issues
+author:         Peter Logg
+maintainer:     loggpeter@gmail.com
+copyright:      2020 Peter Logg
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -23,11 +23,12 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/peterlogg-dotcom-backend
+  location: https://github.com/peterlogg/peterlogg-dotcom-backend
 
 library
   exposed-modules:
-      Lib
+      GetImages
+      Server
   other-modules:
       Paths_peterlogg_dotcom_backend
   hs-source-dirs:

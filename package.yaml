@@ -1,10 +1,10 @@
 name: peterlogg-dotcom-backend
 version: 0.1.0.0
-github: "githubuser/peterlogg-dotcom-backend"
+github: "peterlogg/peterlogg-dotcom-backend"
 license: BSD3
-author: "Author name here"
-maintainer: "example@example.com"
-copyright: "2020 Author name here"
+author: "Peter Logg"
+maintainer: "loggpeter@gmail.com"
+copyright: "2020 Peter Logg"
 
 extra-source-files:
   - README.md
